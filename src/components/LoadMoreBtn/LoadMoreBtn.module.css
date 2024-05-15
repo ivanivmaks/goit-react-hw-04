@@ -1,0 +1,18 @@
+.loadBtn {
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;  
+}
+
+.loadBtn:disabled {
+  background-color: #8b7b7b;
+  cursor: not-allowed;
+}
