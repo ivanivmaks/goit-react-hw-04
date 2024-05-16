@@ -3,7 +3,7 @@ import fetchImagesWithTopic from "./api.js";
 import SearchBar from "./components/SearchBar/SearchBar.jsx";
 import ImageGallery from "./components/ImageGallery/ImageGallery.jsx";
 import Loader from "./components/Loader/Loader.jsx";
-import Error from "./components/Error/Error.jsx";
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage.jsx";
 import ImageModal from "./components/ImageModal/ImageModal.jsx";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn.jsx";
 import { Toaster } from "react-hot-toast";
@@ -60,7 +60,7 @@ export default function App() {
     <>
       <SearchBar onSearch={handleSearch} />
       {loading && <Loader />}
-      {error && <Error />}
+      {error && <ErrorMessage />}
       {images.length > 0 && (
         <ImageGallery items={images} onImageClick={openModal} />
       )}
