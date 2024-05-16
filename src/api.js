@@ -9,7 +9,7 @@ export default async function fetchImagesWithTopic(topic, page) {
       query: topic,
       client_id: API_KEY,
       page,
-      per_page: 9,
+      per_page: 12,
     },
   });
   return response.data.results;

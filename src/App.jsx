@@ -8,7 +8,6 @@ import ImageModal from "./components/ImageModal/ImageModal.jsx";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn.jsx";
 import { Toaster } from "react-hot-toast";
 
-
 export default function App() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -24,7 +23,7 @@ export default function App() {
         setLoading(true);
         const data = await fetchImagesWithTopic(query, page);
         setImages((prevData) => [...prevData, ...data]);
-      } catch (error){
+      } catch (error) {
         setError(true);
       } finally {
         setLoading(false);
