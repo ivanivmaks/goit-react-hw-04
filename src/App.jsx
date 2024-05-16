@@ -3,10 +3,11 @@ import fetchImagesWithTopic from "./api.js";
 import SearchBar from "./components/SearchBar/SearchBar.jsx";
 import ImageGallery from "./components/ImageGallery/ImageGallery.jsx";
 import Loader from "./components/Loader/Loader.jsx";
+import Error from "./components/Error/Error.jsx";
 import ImageModal from "./components/ImageModal/ImageModal.jsx";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn.jsx";
 import { Toaster } from "react-hot-toast";
-import toast from "react-hot-toast";
+
 
 export default function App() {
   const [images, setImages] = useState([]);
@@ -23,12 +24,8 @@ export default function App() {
         setLoading(true);
         const data = await fetchImagesWithTopic(query, page);
         setImages((prevData) => [...prevData, ...data]);
-      } catch {
+      } catch (error){
         setError(true);
-       toast.error(
-         "Whoops, something went wrong! Please try reloading this page!"
-       );
-        console.log(error)
       } finally {
         setLoading(false);
       }
@@ -37,7 +34,7 @@ export default function App() {
     if (query !== "") {
       fetchImages();
     }
-  }, [query, page, error]);
+  }, [query, page]);
 
   const handleSearch = async (topic) => {
     setImages([]);
@@ -63,6 +60,7 @@ export default function App() {
     <>
       <SearchBar onSearch={handleSearch} />
       {loading && <Loader />}
+      {error && <Error />}
       {images.length > 0 && (
         <ImageGallery items={images} onImageClick={openModal} />
       )}
